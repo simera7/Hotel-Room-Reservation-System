@@ -1,0 +1,10 @@
+ 1 1 id11 4.9 notreserved
+ 1 2 id12 4.4 notreserved
+ 1 3 id13 5 reserved
+ 1 4 id14 4.9 notreserved
+ 1 5 id15 4.11 reserved
+ 2 1 id21 5 reserved
+ 2 2 id22 4.9 notreserved
+ 2 3 id23 4.4 notreserved
+ 2 4 id24 5 reserved
+ 2 5 id25 4.4 notreserved
