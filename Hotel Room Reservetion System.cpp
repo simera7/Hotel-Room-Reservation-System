@@ -382,3 +382,163 @@ void displayreservedR(){
     roomfile.close();
     cout<<endl;
 }
+void searchRoom(){
+    system("cls");
+
+    cout<<"---------------------------------------------------------------------------------------------------"<<endl;
+    cout<<"-----------------------------------------Search Room-----------------------------------------------"<<endl;
+    char searchId[20],searchroomNumber[20];
+    float searchroomRate;
+    int searchFloor;
+    int opp;
+    fstream roomfile;
+
+    cout<<"\n\t\t\t\t  1.Search by Id";
+    cout<<"\n\t\t\t\t  2.Search by Room Number";
+    cout<<"\n\t\t\t\t  3.Search by Foor";
+    cout<<"\n\t\t\t\t  4.Search by Rate";
+    cout<<"\n Enter Your option: ";
+    cin>>opp;
+
+    switch(opp){
+        case 1:{
+            bool cond=false;
+            system("cls");
+            cout<<"---------------------------------------------------------------------------------------------------"<<endl;
+            cout<<"-----------------------------------------Search By Id----------------------------------------------"<<endl;
+            cout<<"\n\n Enter Room Id: ";
+            cin>>searchId;
+
+            roomfile.open("roomfile.txt",ios::in);
+            if(roomfile.fail()){
+                cout<<"\n\t\t\t\t ERROR while opening the file";
+                exit(0);
+            }
+
+
+            roomfile>>rooms.floor>>rooms.roomNumber>>rooms.roomId>>rooms.rate>>rooms.status;
+            while(!roomfile.eof()){
+
+                if(strcmp(rooms.roomId,searchId)==0){
+                    cout<<strcmp(rooms.roomId,searchId)<<endl;
+                    cout<<"\n\t\t\t\t\tRoom Floor: "<<rooms.floor<<endl;
+                    cout<<"\t\t\t\t\tRoom Number: "<<rooms.roomNumber<<endl;
+                    cout<<"\t\t\t\t\tID: "<<rooms.roomId<<endl;
+                    cout<<"\t\t\t\t\tRoom Rate: "<<rooms.rate<<endl;
+                    cout<<"\t\t\t\t\tRoom Status: "<<rooms.status<<endl;
+                    cond=true;
+                }
+            roomfile>>rooms.floor>>rooms.roomNumber>>rooms.roomId>>rooms.rate>>rooms.status;
+            }
+            if(!cond) {cout<<"\n\t\t\t\t\t There is no such Room Id"<<endl;}
+        roomfile.close();
+        cout<<endl;
+
+        break;
+        }
+        case 2:{
+            system("cls");
+            cout<<"---------------------------------------------------------------------------------------------------"<<endl;
+            cout<<"-----------------------------------------Search By Room Number----------------------------------------------"<<endl;
+            cout<<"\n\n Enter Room Id: ";
+            cin>>searchroomNumber;
+            bool cond=false;
+            roomfile.open("roomfile.txt",ios::in);
+            if(roomfile.fail()){
+                cout<<"\n\t\t\t\t ERROR while opening the file";
+                exit(0);
+            }
+
+
+            roomfile>>rooms.floor>>rooms.roomNumber>>rooms.roomId>>rooms.rate>>rooms.status;
+            while(!roomfile.eof()){
+                if(strcmp(rooms.roomNumber,searchroomNumber)==0){
+                    cout<<"\n\t\t\t\t\tRoom Floor: "<<rooms.floor<<endl;
+                    cout<<"\t\t\t\t\tRoom Number: "<<rooms.roomNumber<<endl;
+                    cout<<"\t\t\t\t\tID: "<<rooms.roomId<<endl;
+                    cout<<"\t\t\t\t\tRoom Rate: "<<rooms.rate<<endl;
+                    cout<<"\t\t\t\t\tRoom Status: "<<rooms.status<<endl;
+                    cond=true;
+                }
+                if(!cond) cout<<"\n\t\t\t\t\t There is no such Room Number"<<endl;
+
+            roomfile>>rooms.floor>>rooms.roomNumber>>rooms.roomId>>rooms.rate>>rooms.status;
+            }
+        if(!cond) cout<<"\n\t\t\t\t\t There is no such Room Number"<<endl;
+        roomfile.close();
+        cout<<endl;
+
+break;
+        }
+        case 3:{
+            system("cls");
+            cout<<"------------------------------------------------------------------------------------------------------"<<endl;
+            cout<<"-----------------------------------------Search By Floor----------------------------------------------"<<endl;
+            cout<<"\n\n Enter Floor: ";
+            cin>>searchFloor;
+            bool cond=false;
+            roomfile.open("roomfile.txt",ios::in);
+            if(roomfile.fail()){
+                cout<<"\n\t\t\t\t ERROR while opening the file";
+                exit(0);
+            }
+
+            cout<<"\n\t\t\t\t   Rooms on Floor "<<searchFloor<<".\n\n";
+            roomfile>>rooms.floor>>rooms.roomNumber>>rooms.roomId>>rooms.rate>>rooms.status;
+            while(!roomfile.eof()){
+                if(rooms.floor==searchFloor){
+                    cout<<"\n\t\t\t\t\tRoom Floor: "<<rooms.floor<<endl;
+                    cout<<"\t\t\t\t\tRoom Number: "<<rooms.roomNumber<<endl;
+                    cout<<"\t\t\t\t\tID: "<<rooms.roomId<<endl;
+                    cout<<"\t\t\t\t\tRoom Rate: "<<rooms.rate<<endl;
+                    cout<<"\t\t\t\t\tRoom Status: "<<rooms.status<<endl;
+                    cond=true;
+                }
+
+
+
+            roomfile>>rooms.floor>>rooms.roomNumber>>rooms.roomId>>rooms.rate>>rooms.status;
+            }
+            if(!cond) cout<<"\n\t\t\t\t   There is no such Room Floor"<<endl;
+        roomfile.close();
+        cout<<endl;
+            break;
+    }
+        case 4:{
+            system("cls");
+            cout<<"----------------------------------------------------------------------------------------------------------"<<endl;
+            cout<<"-----------------------------------------Search By Room Rate----------------------------------------------"<<endl;
+            cout<<"\n\n Enter Room Rate you want: ";
+            cin>>searchroomRate;
+            bool cond=false;
+            roomfile.open("roomfile.txt",ios::in);
+            if(roomfile.fail()){
+                cout<<"\n\t\t\t\t ERROR while opening the file";
+                exit(0);
+            }
+
+            cout<<"\n\t\t\t\tRooms With room rate < or = "<<searchroomRate<<".\n\n";
+            roomfile>>rooms.floor>>rooms.roomNumber>>rooms.roomId>>rooms.rate>>rooms.status;
+            while(!roomfile.eof()){
+                if(rooms.rate>=searchroomRate){
+                    cout<<"\n\t\t\t\t\tRoom Floor: "<<rooms.floor<<endl;
+                    cout<<"\t\t\t\t\tRoom Number: "<<rooms.roomNumber<<endl;
+                    cout<<"\t\t\t\t\tID: "<<rooms.roomId<<endl;
+                    cout<<"\t\t\t\t\tRoom Rate: "<<rooms.rate<<endl;
+                    cout<<"\t\t\t\t\tRoom Status: "<<rooms.status<<endl;
+                    cond=true;
+                }
+                if(!cond) cout<<"\n\t\t\t\t\t There is no such Room Rate"<<endl;
+
+            roomfile>>rooms.floor>>rooms.roomNumber>>rooms.roomId>>rooms.rate>>rooms.status;
+            }
+            if(!cond) cout<<"\n\t\t\t\t\t There is no such Room Rate"<<endl;
+        roomfile.close();
+        cout<<endl;
+            break;
+    }
+        default:
+            cout<<"Invalid input"<<endl;
+
+    }
+}
