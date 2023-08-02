@@ -542,3 +542,94 @@ break;
 
     }
 }
+
+
+void editRoom(){
+    system("cls");
+    fstream roomfile,roomfile1;
+    int oppchange;
+    char id[20];
+    string status;
+     cout<<"---------------------------------------------------------------------------------------------------"<<endl;
+     cout<<"--------------------------------------------Edit Room----------------------------------------------"<<endl;
+    roomfile.open("roomfile.txt",ios::in);
+    if(roomfile.fail()){
+          cout<<"\n\t\t\t\t ERROR while opening the file";
+            exit(0);
+            }
+    if(!roomfile){
+        cout<<"\n\t\t\t\t No Data Present"<<endl;
+    }
+
+else{
+    cout<<"\n\n Enter Id of The Room You Want to Edit: ";
+    cin>>id;
+    cout<<"\What Propriety of Room Id "<<id<<" Do you want to change"<<endl;
+    cout<<"\n\t\t\t\t\t1.Room Floor"<<endl;
+    cout<<"\t\t\t\t\t2.Room Number"<<endl;
+    cout<<"\t\t\t\t\t3.Room ID"<<endl;
+    cout<<"\t\t\t\t\t4.Room Rate"<<endl;
+    cout<<"\t\t\t\t\t5.Room Status"<<endl;
+    cout<<"\nEnter your choice: ";
+    cin>>oppchange;
+    roomfile>>rooms.floor>>rooms.roomNumber>>rooms.roomId>>rooms.rate>>rooms.status;
+    roomfile1.open("roomfilecp.txt",ios::app | ios:: out);
+    if(roomfile1.fail()){
+        cout<<"\n\t\t\t\t ERROR while opening the file";
+        exit(0);
+    }
+    while(!roomfile.eof()){
+        if(strcmp(id,rooms.roomId)==0){
+
+            switch(oppchange){
+                case 1:
+                        cout<<"\n Enter The New Room Floor: ";
+                        cin>>rooms.floor;
+
+                    break;
+                case 2:
+                        cout<<"\n Enter The New Room Number: ";
+                        cin>>rooms.roomNumber;
+
+                    break;
+
+                case 3:
+                        cout<<"\n Enter The New Room ID: ";
+                        cin>>rooms.roomId;
+
+                        break;
+                case 4:
+                        cout<<"\n Enter The New Room Rate: ";
+                        cin>>rooms.rate;
+
+                    break;
+                case 5:
+                        cout<<"\n Enter The New Room Status: ";
+                        cin>>rooms.status;
+
+                        break;
+
+                default:
+                    cout<<"\n\n\t\t\t\t IVALID INPUT";
+                    break;
+            }
+                cout<<"\n\t\t\t\t\tRoom Floor: "<<rooms.floor<<endl;
+                cout<<"\t\t\t\t\tRoom Number: "<<rooms.roomNumber<<endl;
+                cout<<"\t\t\t\t\tID: "<<rooms.roomId<<endl;
+                cout<<"\t\t\t\t\tRoom Rate: "<<rooms.rate<<endl;
+                cout<<"\t\t\t\t\tRoom Status: "<<rooms.status<<endl;
+
+        }
+        roomfile1<<" "<<rooms.floor<<" "<<rooms.roomNumber<<" "<<rooms.roomId<<" "<<rooms.rate<<" "<<rooms.status<<endl;
+        roomfile>>rooms.floor>>rooms.roomNumber>>rooms.roomId>>rooms.rate>>rooms.status;
+
+    }
+
+    roomfile.close();
+    roomfile1.close();
+}
+
+    remove("roomfile.txt");
+    rename("roomfilecp.txt","roomfile.txt");
+
+}
