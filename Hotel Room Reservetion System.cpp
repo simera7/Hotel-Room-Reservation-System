@@ -283,7 +283,7 @@ void addRoom(){
     cout<<"\t\t\t\t Enter Room Status: ";
     cin>>rooms.status;
 
-    roomfile.open("room1.txt",ios::app | ios::out);
+    roomfile.open("roomfile.txt",ios::app | ios::out);
 
     if(roomfile.fail()){
         cout<<"\n\t\t\t\tError..File is not Found!"<<endl;
