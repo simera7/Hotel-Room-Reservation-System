@@ -633,3 +633,92 @@ else{
     rename("roomfilecp.txt","roomfile.txt");
 
 }
+char reserveRoom(){
+system("cls");
+int oppchange;
+fstream customer1;
+fstream roomfile,roomfile2;
+cout<<"---------------------------------------------------------------------------------------------------"<<endl;
+cout<<"--------------------------------------------Reserve Room----------------------------------------------"<<endl;
+cout<<customers.password;
+cout<<"\n Enter Your Full Name: ";
+cin>>customers.fname>>customers.mname;
+cout<<"\n Enter Your Phone Number: ";
+cin>>customers.phoneNumber;
+cout<<"\n Enter Your Email: ";
+cin>>customers.email;
+cout<<"\n Enter Your Password: ";
+cin>>customers.password;
+
+trynew:
+cout<<"\n Enter Id of The Room You Want: ";
+cin>>customers.roomIdc;
+roomfile.open("roomfile.txt",ios::in);
+if(roomfile.fail()){
+    cout<<"\n\t\t\t\t ERROR while opening the file";
+    exit(0);
+    }
+roomfile>>rooms.floor>>rooms.roomNumber>>rooms.roomId>>rooms.rate>>rooms.status;
+while(!roomfile.eof()){
+        if(strcmp(customers.roomIdc,rooms.roomId)==0){
+            if(rooms.status=="reserved"){
+                cout<<"\n The room Reserved Please choice Another Room"<<endl;
+
+                goto trynew;
+            }
+        }
+roomfile>>rooms.floor>>rooms.roomNumber>>rooms.roomId>>rooms.rate>>rooms.status;
+}
+roomfile.close();
+
+customer1.open("customerfile.txt",ios::app | ios::out);
+if(customer1.fail()){
+    cout<<"\n\t\t\t\t ERROR while opening the file";
+    exit(0);
+}
+customer1<<" "<<customers.fname<<" "<<customers.mname<<" "<<customers.phoneNumber<<" "<<customers.email<<" "<<customers.roomIdc<<" "<<customers.password<<endl;
+customer1.close();
+
+ cout<<endl;
+
+
+    roomfile.open("roomfile.txt", ios::in);
+
+    roomfile2.open("roomfilecp.txt",ios::app |ios::out);
+
+if(roomfile.fail()){
+    cout<<"\n\t\t\t\t ERROR while opening the file";
+    exit(0);
+            }
+if(roomfile2.fail()){
+    cout<<"\n\t\t\t\t ERROR while opening the file";
+    exit(0);
+            }
+
+roomfile>>rooms.floor>>rooms.roomNumber>>rooms.roomId>>rooms.rate>>rooms.status;
+while(!roomfile.eof()){
+    if(strcmp(customers.roomIdc,rooms.roomId)==0){
+        rooms.status="reserved";
+         cout<<"\n\t\t\t Successfully Reserved!"<<endl<<endl;
+        cout<<"\n\t\t\t\t\tRoom Floor: "<<rooms.floor<<endl;
+        cout<<"\t\t\t\t\tRoom Number: "<<rooms.roomNumber<<endl;
+        cout<<"\t\t\t\t\tID: "<<rooms.roomId<<endl;
+        cout<<"\t\t\t\t\tRoom Rate: "<<rooms.rate<<endl;
+        cout<<"\t\t\t\t\tRoom Status: "<<rooms.status<<endl;
+    }
+roomfile2<<" "<<rooms.floor<<" "<<rooms.roomNumber<<" "<<rooms.roomId<<" "<<rooms.rate<<" "<<rooms.status<<endl;
+
+roomfile>>rooms.floor>>rooms.roomNumber>>rooms.roomId>>rooms.rate>>rooms.status;
+}
+roomfile.close();
+roomfile2.close();
+remove("roomfile.txt");
+
+rename("roomfilecp.txt","roomfile.txt");
+
+return customers.roomIdc[100];
+}
+
+
+
+
