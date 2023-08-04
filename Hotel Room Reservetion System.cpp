@@ -58,7 +58,7 @@ int main(){
             cout<<"\n\t\t\t\t  2.Reserve Room";
             cout<<"\n\t\t\t\t  3.Cancel Reservation";
             cout<<"\n\t\t\t\t  4.Search For Room";
-            cout<<"\n\t\t\t\t  5.Exit;
+            cout<<"\n\t\t\t\t  5.Exit";
             cout<<"\n\t\t\t\t  ----------------------";
             cout<<"\n\t\t\t\t  choose Option[1/2/3/4]";
             cout<<"\n\t\t\t\t  ----------------------";
