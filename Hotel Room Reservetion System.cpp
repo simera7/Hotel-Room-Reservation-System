@@ -37,7 +37,7 @@ void searchRoom();
 void editRoom();
 
 //CUSTMER
-char reserveRoom();
+void reserveRoom();
 void changestatus(char);
 void cancel();
 void displayCustomer();
@@ -58,6 +58,7 @@ int main(){
             cout<<"\n\t\t\t\t  2.Reserve Room";
             cout<<"\n\t\t\t\t  3.Cancel Reservation";
             cout<<"\n\t\t\t\t  4.Search For Room";
+            cout<<"\n\t\t\t\t  5.Exit;
             cout<<"\n\t\t\t\t  ----------------------";
             cout<<"\n\t\t\t\t  choose Option[1/2/3/4]";
             cout<<"\n\t\t\t\t  ----------------------";
@@ -96,6 +97,11 @@ int main(){
                         goto customermenu;
                     }
                     break;
+                 case '5':
+                    system("cls");
+                    cout<<"\n\n\t\t\t\t Successfully Exited\n\n";
+                    exit(0);
+                break;
                 default:
                 cout<<"\n\t\t\t\t  Invalid Input";
 
@@ -137,6 +143,7 @@ int main(){
                     cout<<"\n\t\t\t\t  5.Display customer";
                     cout<<"\n\t\t\t\t  6.Edit Room";
                     cout<<"\n\t\t\t\t  7.Search For Room";
+                    cout<<"\n\t\t\t\t  8.Exit";
                     cout<<"\n\t\t\t\t   --------------------------";
                     cout<<"\n\t\t\t\t   choose Option[1/2/3/4/5/6]";
                     cout<<"\n\t\t\t\t   --------------------------"<<endl;
@@ -196,6 +203,11 @@ int main(){
                             if(gomain=='y'||gomain=='Y'){
                                 goto adminmenu;
                             }
+                            break;
+                         case 8:
+                            system("cls");
+                            cout<<"\n\n\t\t\t\t Successfully Exited\n\n";
+                            exit(0);
                             break;
                         default:
                             cout<<"\n Invalid choice... please try again ...."<<endl;
@@ -633,7 +645,7 @@ else{
     rename("roomfilecp.txt","roomfile.txt");
 
 }
-char reserveRoom(){
+void reserveRoom(){
 system("cls");
 int oppchange;
 fstream customer1;
@@ -715,8 +727,6 @@ roomfile2.close();
 remove("roomfile.txt");
 
 rename("roomfilecp.txt","roomfile.txt");
-
-return customers.roomIdc[100];
 }
 
 void cancel(){
