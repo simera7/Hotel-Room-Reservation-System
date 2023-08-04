@@ -442,7 +442,7 @@ void searchRoom(){
                 }
             roomfile>>rooms.floor>>rooms.roomNumber>>rooms.roomId>>rooms.rate>>rooms.status;
             }
-            if(!cond) {cout<<"\n\t\t\t\t\t There is no such Room Id"<<endl;}
+            if(!cond) {cout<<"\n\t\t\t\t\t There is no such Room "<<endl;}
         roomfile.close();
         cout<<endl;
 
@@ -460,8 +460,6 @@ void searchRoom(){
                 cout<<"\n\t\t\t\t ERROR while opening the file";
                 exit(0);
             }
-
-
             roomfile>>rooms.floor>>rooms.roomNumber>>rooms.roomId>>rooms.rate>>rooms.status;
             while(!roomfile.eof()){
                 if(strcmp(rooms.roomNumber,searchroomNumber)==0){
@@ -472,11 +470,9 @@ void searchRoom(){
                     cout<<"\t\t\t\t\tRoom Status: "<<rooms.status<<endl;
                     cond=true;
                 }
-                if(!cond) cout<<"\n\t\t\t\t\t There is no such Room Number"<<endl;
-
             roomfile>>rooms.floor>>rooms.roomNumber>>rooms.roomId>>rooms.rate>>rooms.status;
             }
-        if(!cond) cout<<"\n\t\t\t\t\t There is no such Room Number"<<endl;
+        if(!cond) cout<<"\n\t\t\t\t\t There is no such Room "<<endl;
         roomfile.close();
         cout<<endl;
 
@@ -540,11 +536,9 @@ break;
                     cout<<"\t\t\t\t\tRoom Status: "<<rooms.status<<endl;
                     cond=true;
                 }
-                if(!cond) cout<<"\n\t\t\t\t\t There is no such Room Rate"<<endl;
-
             roomfile>>rooms.floor>>rooms.roomNumber>>rooms.roomId>>rooms.rate>>rooms.status;
             }
-            if(!cond) cout<<"\n\t\t\t\t\t There is no such Room Rate"<<endl;
+            if(!cond) cout<<"\n\t\t\t\t\t There is no such Room"<<endl;
         roomfile.close();
         cout<<endl;
             break;
