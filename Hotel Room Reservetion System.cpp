@@ -564,7 +564,7 @@ void editRoom(){
 else{
     cout<<"\n\n Enter Id of The Room You Want to Edit: ";
     cin>>id;
-    cout<<"\What Propriety of Room Id "<<id<<" Do you want to change"<<endl;
+    cout<<"\nWhat Propriety of Room Id "<<id<<" Do you want to change"<<endl;
     cout<<"\n\t\t\t\t\t1.Room Floor"<<endl;
     cout<<"\t\t\t\t\t2.Room Number"<<endl;
     cout<<"\t\t\t\t\t3.Room ID"<<endl;
